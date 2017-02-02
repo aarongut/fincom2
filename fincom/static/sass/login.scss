@@ -1,0 +1,35 @@
+@import 'globals';
+
+body.login {
+	background-color: $purple;
+	color: $gold;
+}
+
+
+.login {
+	text-align: center;
+	color: $gold;
+	
+	div {
+		margin-top: 30%;
+	}
+
+	h3 {
+		font-size: 24px;
+		margin-bottom: $pad-m;
+	}
+
+	h2 {
+		font-size: 28px;
+		margin-top: -$pad-l;
+	}
+
+	.btn {
+		background-color: $gold;
+		color: $purple;
+
+		&:hover {
+			background-color: darken($gold, 15%);
+		}
+	}
+}

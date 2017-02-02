@@ -1,0 +1,80 @@
+@import 'globals';
+
+.item {
+	padding: $pad-m $pad-xl;
+	margin: 0px;
+	border-bottom: 1px solid $midgray;
+	box-sizing: border-box;
+	width: 100%;
+
+	.committee {
+		color: $midgray;
+		font-size: 12px;
+		font-weight: bold;
+		margin: 0px;
+	}
+
+	.details-row {
+		margin: $pad-m 0;
+		font-size: 16px;
+		color: $text;
+		padding: 0px;
+
+		b {
+			color: $darkgray;
+		}
+		
+		em {
+			color: $midgray;
+			margin: 0 $pad-s;
+		}
+	}
+
+	.status {
+		color: $midgray;
+		font-size: 12px;
+		margin: 0px;
+	}
+
+	.cost {
+		float: right;
+		display: inline-block;
+		text-align: center;
+		width: 120px;
+		height: 24px;
+		font-size: 12px;
+		color: $midgray;
+		border-radius: $pad-s;
+		border: 1px solid $midgray;
+		box-sizing: border-box;
+		padding: 2*$pad-s;
+		margin: 2*$pad-s 0;
+	}
+
+	.approved {
+		background-color: #ffd9d9;
+	}
+
+	.processed {
+		background-color: #d9ffd9;
+	}
+
+	.newItem {
+		background-color: #fff7d9;
+	}
+}
+
+$button-size: 24px;
+
+.btn-floating {
+	position: fixed;
+	bottom: $button-size;
+	right: $button-size;
+	padding: $button-size;
+
+	z-index: 1000;
+	border-radius: 50%;
+
+	text-align: center;
+	box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+}

@@ -1,0 +1,32 @@
+<div class="item">
+  <div class="committee">
+    {{ I.comName }}
+  </div>
+  {% if I.approved %}
+    <div class="cost approved">
+  {% elif I.processed %}
+    <div class="cost processed">
+  {% else %}
+    <div class="cost newItem">
+  {% endif %}
+      ${{ I.cost|floatformat:"2" }}
+    </div>
+  <div class="details-row">
+    <b>{{ I.event }}:</b>
+    {{ I.desc }}
+    <em>by</em>
+    {{ I.created_by.first_name }} {{ I.created_by.last_name }}
+    <em>on</em> {{ I.date_purchased }}
+    <em>(filed {{ I.date_filed }})</em>
+  </div>
+  <div class="status">
+    {% if I.approved or I.processed %}
+      Approved By: 
+      {% for u in I.approved_by.all %}
+        {{ u.first_name }} {{ u.last_name }}
+      {% endfor %}
+    {% else %}
+      Needs Approval
+    {% endif %}
+  </div>
+</div>
