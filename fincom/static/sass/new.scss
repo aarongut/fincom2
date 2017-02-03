@@ -1,0 +1,54 @@
+h1 {
+	font-size: 18px;
+	font-weight: lighter;
+	color: $purple;
+	margin: $pad-l;
+}
+
+hr {
+	margin: $pad-l;
+	color: $midgray;
+}
+
+
+form {
+	div {
+		margin: $pad-l;
+		width: 376px;
+
+		* {
+			display: inline-block;
+		}
+
+		label {
+			text-align: right;
+			width: 180px;
+			color: $text;
+			vertical-align: top;
+		}
+
+		input, select, textarea {
+			width: 180px;
+			float: right;
+		}
+
+		&.clear {
+			margin: -$pad-l 0;
+			width: 180px;
+		}
+
+		&.clear:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	}
+}
+
+.rcol {
+	float: right;
+	width: 40%;
+	margin: $pad-l;
+	color: $midgray;
+	font-weight: lighter;
+}
