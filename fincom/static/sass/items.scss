@@ -4,6 +4,9 @@ section {
 	font-size: 16px;
 	margin-top: 2*$pad-xl;
 	margin-bottom: -2*$pad-xl + $pad-l;
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .item {
