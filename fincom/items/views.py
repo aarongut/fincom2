@@ -15,7 +15,7 @@ def authError():
 
 def myItems(user):
     if (user.groups.filter(name='Fincom').exists()):
-        return Items.objects.order_by('-date_filed', 'desc')
+        return Item.objects.order_by('-date_filed', 'desc')
 
     comms = []
     for c in Committee.objects.all():
@@ -42,13 +42,15 @@ def list(request):
 @login_required
 def details(request, item_id):
     I = Item.objects.get(pk=item_id)
-    if (not isAuthorised(request, I)):
-        return HttpResponseRedirect('/items/' + str(item_id) + '/edit')
+    if (not isAuthorised(request, I)
+        and request.user != I.created_by):
+        return authError()
 
     template = loader.get_template('items/details.html')
     
     context = {
         'I': I,
+        'approve': isAuthorised(request, I),
     }
     return HttpResponse(template.render(context, request))
 
@@ -62,6 +64,7 @@ def approve(request, item_id):
     if (I.committee.chair == request.user and
         I.status == Item.NEW):
         I.status = Item.PREAPPROVED
+        I.mail_fincom()
     elif (request.user.groups.filter(name='Fincom').exists()):
         I.status = Item.PROCESSED
         
@@ -146,6 +149,8 @@ def new_form(request):
         )
 
         item.save()
+
+        item.mail_com_chair()
 
         return HttpResponseRedirect('/items')
 

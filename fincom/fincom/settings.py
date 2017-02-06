@@ -132,6 +132,14 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET'
 SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['andrew.cmu.edu']
 SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {'hd': 'andrew.cmu.edu' }
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/items/'
+LOGIN_URL = '/login/google-oauth2/'
+
+# email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '465'
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'fincom.bot@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/

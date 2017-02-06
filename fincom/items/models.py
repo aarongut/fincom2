@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from storages.backends.s3boto3 import S3Boto3Storage
 from stdimage.models import StdImageField
 from datetime import datetime, date
@@ -58,6 +59,49 @@ class Item(models.Model):
 
     def __str__(self):
         return self.committee.name + ": " + self.event + " " + self.desc
+
+    def mail_com_chair(self):
+        send_mail(
+            'New Reimbursement - ' + self.event + ': ' + self.desc,
+            'Hey ' + self.committee.chair.first_name + ',\n\n' + \
+            'Please take a moment to review http://fincom.delt.space/items/' + \
+            str(self.pk) + ' and approve or reject the request from ' + \
+            self.created_by.first_name + ' ' + self.created_by.last_name + \
+            '. If you have any questions, contact the treasurer.\n\n' + \
+            'Have a fiscally responsible day,\n Fincom Bot',
+            'fincom.bot@gmail.com',
+            [self.committee.chair.email],
+            html_message='Hey ' + self.committee.chair.first_name+',<br><br>' +\
+            'Please take a moment to review ' + \
+            '<a href="http://fincom.delt.space/items/' + \
+            str(self.pk) + '">http://fincom.delt.space/items/' + str(self.pk) +\
+            '</a> and approve or reject the request from ' + \
+            self.created_by.first_name + ' ' + self.created_by.last_name + \
+            '. If you have any questions, contact the treasurer.<br><br>' + \
+            'Have a fiscally responsible day,<br><br><em>Fincom Bot</em>'
+        )
+
+    def mail_fincom(self):
+        emails = [s.email for s in User.objects.filter(groups__name='Fincom')]
+
+        send_mail(
+            'Preapproved Reimbursement - ' + self.event + ': ' + self.desc,
+            'Hey Fincom,\n\n' + \
+            'Please take a moment to review http://fincom.delt.space/items/' + \
+            str(self.pk) + ' and approve or reject the request from ' + \
+            self.created_by.first_name + ' ' + self.created_by.last_name + \
+            '.\n\nHave a fiscally responsible day,\n Fincom Bot',
+            'fincom.bot@gmail.com',
+            emails,
+            html_message='Hey Fincom,<br><br>' + \
+            'Please take a moment to review ' + \
+            '<a href="http://fincom.delt.space/items/' + \
+            str(self.pk) + '">http://fincom.delt.space/items/' + str(self.pk) +\
+            '</a> and approve or reject the request from ' + \
+            self.created_by.first_name + ' ' + self.created_by.last_name + \
+            '.<br><br>' + \
+            'Have a fiscally responsible day,<br><br> <em>Fincom Bot</em>'
+        )
 
     @staticmethod
     def parseDate(date_str):

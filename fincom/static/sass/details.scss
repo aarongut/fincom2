@@ -26,3 +26,17 @@
 		font-weight: normal;
 	}
 }
+
+.details {
+	color: $text;
+	font-size: 12px;
+	font-weight: normal;
+	margin: $pad-m 0;
+	padding: $pad-l;
+	border-radius: $pad-s;
+	border: 1px solid $midgray;
+
+	span {
+		color: $midgray;
+	}
+}

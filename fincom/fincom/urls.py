@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^logout$', views.user_logout, name='logout'),
     url(r'^items/', include('items.urls')),
     url('', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
