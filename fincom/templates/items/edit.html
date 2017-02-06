@@ -1,0 +1,65 @@
+{% extends "../boilerplate.html" %}
+
+{% block title %}Edit Reimbursement{% endblock %}
+
+{% block main %}
+
+<div>
+<h1>Edit Reimbursements</h1>
+<hr>
+
+<form action="/items/{{ I.pk }}/edit" method="post">
+  {% csrf_token %}
+  <div>
+    <label for="desc">Item</label>
+    <input id="desc" type="text" name="desc" placeholder="What you bought"
+                                             value="{{ I.desc }}">
+  </div>
+
+  <div>
+    <label for="event">Event</label>
+    <input id="event" type="text" name="event" placeholder="When we need it"
+                                               value="{{ I.event }}">
+  </div>
+
+  <div>
+    <label for="committee">Committee or Budget</label>
+    <select name="committee" id="committee">
+      {% for C in committees %}
+        {% if I.committee == C %}
+          <option selected>{{ C.name }}</option>
+        {% else %}
+          <option>{{ C.name }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+
+  <div>
+    <label for="cost">Cost</label>
+    <input id="cost" type="text" name="cost" placeholder="15.00"
+                                             value="{{ I.cost }}">
+  </div>
+
+  <div>
+    <label for="date">Date Purchased</label>
+    <input id="date" type="date" name="date" placeholder="mm/dd/yyyy"
+                                             value="{{ I.date_purchased }}">
+  </div>
+
+  <div class="clear">
+    <div>
+    <label for="details">Details</label>
+    <textarea id="details" name="details" rows="4" class="clear">{{ I.details }}</textarea>
+    </div>
+  </div>
+
+  <div class="clear">
+  <div>
+  <input type="submit">
+  </div>
+  </div>
+</form>
+</div>
+
+{% endblock %}

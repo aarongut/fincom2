@@ -6,11 +6,14 @@
     <div class="cost approved">
   {% elif I.processed %}
     <div class="cost processed">
+  {% elif I.rejected %}
+    <div class="cost rejected">
   {% else %}
     <div class="cost newItem">
   {% endif %}
       ${{ I.cost|floatformat:"2" }}
     </div>
+  <a href="/items/{{ I.pk }}">
   <div class="details-row">
     <b>{{ I.event }}:</b>
     {{ I.desc }}
@@ -19,12 +22,15 @@
     <em>on</em> {{ I.date_purchased }}
     <em>(filed {{ I.date_filed }})</em>
   </div>
+  </a>
   <div class="status">
     {% if I.approved or I.processed %}
       Approved By: 
       {% for u in I.approved_by.all %}
         {{ u.first_name }} {{ u.last_name }}
       {% endfor %}
+    {% elif I.rejected %}
+      Reimbursement Declined
     {% else %}
       Needs Approval
     {% endif %}

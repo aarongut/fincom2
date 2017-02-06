@@ -2,10 +2,60 @@
 
 {% block main %}
 
-{% for I in items %}
+{% if error %}
+<div>
+  <span class="error">{{ error }}</span>
+</div>
+{% endif %}
+
+{% if preapproved %}
+<section>Pre-Approved</section>
+<div>
+{% for I in preapproved %}
   {% include "./item.html" %}
 {% empty %}
-  <div>No Reimbursements</div>
+  <div class="empty">No Reimbursements</div>
 {% endfor %}
+</div>
+{% endif %}
 
+{% if newitems %}
+<section>New Items</section>
+<div>
+{% for I in newitems %}
+  {% include "./item.html" %}
+{% empty %}
+  <div class="empty">No Reimbursements</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if processed %}
+<section>Approved</section>
+<div>
+{% for I in processed %}
+  {% include "./item.html" %}
+{% empty %}
+  <div class="empty">No Reimbursements</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if rejected %}
+<section>Rejected</section>
+<div>
+{% for I in rejected %}
+  {% include "./item.html" %}
+{% empty %}
+  <div class="empty">No Reimbursements</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block bottom %}
+  <a href="/items/new" title="Submit new item" class="btn-floating">
+    <span>+</span>
+  </a>
 {% endblock %}

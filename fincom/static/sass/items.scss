@@ -1,3 +1,11 @@
+section {
+	color: $midgray;
+	font-weight: lighter;
+	font-size: 16px;
+	margin-top: 2*$pad-xl;
+	margin-bottom: -2*$pad-xl + $pad-l;
+}
+
 .item {
 	padding: $pad-m $pad-xl;
 	margin: 0px;
@@ -10,6 +18,10 @@
 		font-size: 12px;
 		font-weight: bold;
 		margin: 0px;
+	}
+
+	a {
+		text-decoration: none;
 	}
 
 	.details-row {
@@ -36,7 +48,6 @@
 	}
 
 	.cost {
-		float: right;
 		display: inline-block;
 		text-align: center;
 		width: 120px;
@@ -58,9 +69,28 @@
 		background-color: #d9ffd9;
 	}
 
+	.rejected {
+		background-color: $midgray;
+		color: $lightgray;
+	}
+
 	.newItem {
 		background-color: #fff7d9;
 	}
+}
+
+@media (min-width: 800px) {
+	.item .cost {
+		float: right;
+	}
+}
+
+.empty {
+	margin: $pad-l;
+	color: $midgray;
+	font-weight: lighter;
+	font-size: 16px;
+	text-align: center;
 }
 
 $button-size: 24px;
@@ -69,11 +99,22 @@ $button-size: 24px;
 	position: fixed;
 	bottom: $button-size;
 	right: $button-size;
-	padding: $button-size;
+	padding: $button-size/2;
+	color: $gold;
+	background-color: $purple;
+	text-decoration: none;
+	font-weight: bold;
 
 	z-index: 1000;
 	border-radius: 50%;
 
 	text-align: center;
 	box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+
+	span {
+		display: block;
+		width: 36;
+		height: 36;
+		font-size: 28;
+	}
 }

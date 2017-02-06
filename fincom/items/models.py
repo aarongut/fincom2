@@ -1,11 +1,16 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
+from storages.backends.s3boto3 import S3Boto3Storage
+from stdimage.models import StdImageField
+from datetime import datetime, date
 
 from committee.models import Committee
 
 from django.db import models
 
 class Item(models.Model):
+    S3 = S3Boto3Storage()
+
     NEW = 'N'
     PREAPPROVED = 'C'
     PROCESSED = 'P'
@@ -24,24 +29,29 @@ class Item(models.Model):
     details = models.TextField()
     cost = models.DecimalField(max_digits=7, decimal_places=2)
     date_purchased = models.DateField('date purchased')
+    image = StdImageField(upload_to='images/%Y/%m/%d',
+                          variations={'thumbnail': (600, 600)}
+                         )
 
     created_by = models.ForeignKey(User, related_name='created_by')
     approved_by = models.ManyToManyField(User, blank=True, related_name='approved_by')
     date_filed = models.DateTimeField('date filed')
     status = models.CharField(max_length=2, choices=STATUS)
-    task_id = models.CharField(max_length=30)
 
     def approved(self):
-        return self.status == 'P'
+        return self.status == Item.PREAPPROVED
 
     def processed(self):
-        return self.status == 'C'
+        return self.status == Item.PROCESSED
 
     def rejected(self):
-        return self.status == 'R'
+        return self.status == Item.REJECTED
 
     def new(self):
-        return self.status == 'N'
+        return self.status == Item.NEW
+
+    def statusText(self):
+        return dict(Item.STATUS)[self.status]
 
     def comName(self):
         return self.committee.name

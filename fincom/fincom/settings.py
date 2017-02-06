@@ -41,9 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup',
+    'social_django',
+    'storages',
+    'stdimage',
+
     'items',
     'committee',
-    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +97,14 @@ DATABASES = {
     }
 }
 
+# S3 File Storage
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID=os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_AUTO_CREATE_BUCKET=True
+AWS_STORAGE_BUCKET_NAME='fincom'
+AWS_S3_FILE_OVERWRITE=False
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -118,6 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
 SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['andrew.cmu.edu']
+SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {'hd': 'andrew.cmu.edu' }
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/items/'
 
 # Internationalization

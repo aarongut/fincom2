@@ -14,14 +14,12 @@ hr {
 form {
 	div {
 		margin: $pad-l;
-		width: 376px;
 
 		* {
 			display: inline-block;
 		}
 
 		label {
-			text-align: right;
 			width: 180px;
 			color: $text;
 			vertical-align: top;
@@ -29,7 +27,6 @@ form {
 
 		input, select, textarea {
 			width: 180px;
-			float: right;
 		}
 
 		&.clear {
@@ -46,9 +43,32 @@ form {
 }
 
 .rcol {
-	float: right;
-	width: 40%;
 	margin: $pad-l;
 	color: $midgray;
 	font-weight: lighter;
+}
+
+@media (min-width: 430px) {
+	form {
+		div {
+			width: 376px;
+
+
+			label {
+				text-align: right;
+			}
+
+			input, select, textarea {
+				width: 180px;
+				float: right;
+			}
+		}
+	}
+}
+
+@media (min-width: 800px) {
+	.rcol {
+		float: right;
+		width: 40%;
+	}
 }

@@ -1,6 +1,6 @@
 $purple: #563d7c;
 $gold: #fdd017;
-$lightgray: #fcfcfc;
+$lightgray: #f8f8f8;
 $midgray: #969499;
 $darkgray: #4b4a4d;
 $text: #252526;
@@ -41,18 +41,20 @@ body {
 }
 
 .container {
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 64px;
-	max-width: 960;
-	background-color: #fff;
-	border: solid 1px $midgray;
+	& > div {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 64px;
+		max-width: 960;
+		background-color: #fff;
+		border: solid 1px $midgray;
+		box-shadow: 0px 3px 9px lighten($shadowgray, 20%);
+	}
 }
-
 
 .btn {
 	border-radius: $pad-s;
+	border: 1px solid $midgray;
 	color: $purple;
 
 	display: inline-block;
@@ -63,6 +65,6 @@ body {
 	
 
 	&:hover {
-		background-color: darken($purple, 15%);
+		background-color: lighten($purple, 35%);
 	}
 }

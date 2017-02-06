@@ -1,0 +1,22 @@
+{% extends "../boilerplate.html" %}
+
+{% block main %}
+
+<div>
+{% include "./item.html" %}
+
+<div class="approve">
+  <div class="status">Status: <span>{{ I.statusText }}</span></div>
+
+  <div class="actions">
+    <a href="/items/{{ I.pk }}/approve" class="btn">Approve</a>
+    <a href="/items/{{ I.pk }}/reject" class="btn">Reject</a>
+    <a href="/items/{{ I.pk }}/delete" class="btn">Delete</a>
+    <a href="/items/{{ I.pk }}/edit" class="btn">Edit</a>
+  </div>
+
+  <a href="{{ I.image.url }}"><img src="{{ I.image.thumbnail.url }}"></a>
+</div>
+</div>
+
+{% endblock %}
