@@ -1,6 +1,7 @@
 from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from models import Item
@@ -25,16 +26,33 @@ def myItems(user):
     return Item.objects.filter(Q(created_by=user) | Q(committee__in=comms)) \
             .order_by('-date_filed', 'desc')
 
+def pageItems(request, items, status):
+    if status != 'M':
+        p = Paginator(items.filter(status=status), 8)
+    else:
+        p = Paginator(items, 8)
+    page = request.GET.get(status)
+
+    try:
+        return p.page(page)
+    except PageNotAnInteger:
+        return p.page(1)
+    except EmptyPage:
+        return p.page(p.num_pages)
+
 @login_required
 def list(request):
     template = loader.get_template('items/list.html')
     items = myItems(request.user)
+    mine = Item.objects.filter(created_by=request.user).order_by('-date_filed')
+
 
     context = {
-        'preapproved': items.filter(status=Item.PREAPPROVED),
-        'processed': items.filter(status=Item.PROCESSED),
-        'newitems': items.filter(status=Item.NEW),
-        'rejected': items.filter(status=Item.REJECTED),
+        'preapproved': pageItems(request, items, Item.PREAPPROVED),
+        'processed': pageItems(request, items, Item.PROCESSED),
+        'newitems': pageItems(request, items, Item.NEW),
+        'rejected': pageItems(request, items, Item.REJECTED),
+        'mine': pageItems(request, mine, 'M'),
     }
 
     return HttpResponse(template.render(context, request))

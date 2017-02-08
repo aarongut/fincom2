@@ -9,6 +9,27 @@ section {
 	margin-left: auto;
 }
 
+.items {
+	a.page {
+		display: inline-block;
+		margin: $pad-m;
+		text-decoration: none;
+		color: $midgray;
+		font-size: 12px;
+		float: right;
+	}
+
+	a.page:hover {
+		text-decoration: underline;
+		color: $purple;
+	}
+
+	a.page.empty:hover {
+		color: $midgray;
+		text-decoration: none;
+	}
+}
+
 .item {
 	padding: $pad-m $pad-xl;
 	margin: 0px;

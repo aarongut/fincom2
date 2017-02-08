@@ -9,48 +9,32 @@
 {% endif %}
 
 {% if preapproved %}
-<section>Pre-Approved</section>
-<div>
-{% for I in preapproved %}
-  {% include "./item.html" %}
-{% empty %}
-  <div class="empty">No Reimbursements</div>
-{% endfor %}
-</div>
+{% with items=preapproved pagination_key="C" name="Pre-Approved" %}
+  {% include "./section.html" %}
+{% endwith %}
 {% endif %}
 
 {% if newitems %}
-<section>New Items</section>
-<div>
-{% for I in newitems %}
-  {% include "./item.html" %}
-{% empty %}
-  <div class="empty">No Reimbursements</div>
-{% endfor %}
-</div>
+{% with items=newitems pagination_key="N" name="New Items" %}
+  {% include "./section.html" %}
+{% endwith %}
 {% endif %}
 
 {% if processed %}
-<section>Approved</section>
-<div>
-{% for I in processed %}
-  {% include "./item.html" %}
-{% empty %}
-  <div class="empty">No Reimbursements</div>
-{% endfor %}
-</div>
+{% with items=processed pagination_key="P" name="Approved" %}
+  {% include "./section.html" %}
+{% endwith %}
 {% endif %}
 
 {% if rejected %}
-<section>Rejected</section>
-<div>
-{% for I in rejected %}
-  {% include "./item.html" %}
-{% empty %}
-  <div class="empty">No Reimbursements</div>
-{% endfor %}
-</div>
+{% with items=rejected pagination_key="R" name="Rejected" %}
+  {% include "./section.html" %}
+{% endwith %}
 {% endif %}
+
+{% with items=mine pagination_key="M" name="My Reimbursements" %}
+  {% include "./section.html" %}
+{% endwith %}
 
 {% endblock %}
 
