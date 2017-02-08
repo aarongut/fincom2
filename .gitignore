@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# vim
+*.swp
+
 # C extensions
 *.so
 
@@ -53,7 +56,6 @@ coverage.xml
 *.log
 local_settings.py
 staticfiles
-css
 migrations
 
 # Flask stuff:
