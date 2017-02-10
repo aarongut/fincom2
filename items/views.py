@@ -53,6 +53,8 @@ def list(request):
         'newitems': pageItems(request, items, Item.NEW),
         'rejected': pageItems(request, items, Item.REJECTED),
         'mine': pageItems(request, mine, 'M'),
+        'committees': Committee.objects.order_by('name'),
+        'fincom': request.user.groups.filter(name='Fincom').exists(),
     }
 
     return HttpResponse(template.render(context, request))

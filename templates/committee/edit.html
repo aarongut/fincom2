@@ -1,0 +1,73 @@
+{% extends "../boilerplate.html" %}
+
+{% block main %}
+<div>
+  {% for C in committees %}
+  <form class="committee" action="/committees/update/{{ C.pk }}/" method="post">
+    {% csrf_token %}
+    <label for="name">Committee Name</label>
+    <input id="name" name="name" value="{{ C.name }}">
+
+    <label for="chair">Chair</label>
+    <select name="chair" id="name">
+      {% for U in users %}
+        {% if C.chair == U %}
+        <option selected value="{{ U.pk }}">{{ U.first_name }} {{ U.last_name }}</option>
+        {% else %}
+        <option value="{{ U.pk }}">{{ U.first_name }} {{ U.last_name }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Update">
+  </form>
+  {% endfor %}
+
+  <form class="committee" action="/committees/new" method="post">
+    {% csrf_token %}
+    <label for="name">New Committee</label>
+    <input id="name" name="name" value="{{ C.name }}">
+
+    <label for="chair">Chair</label>
+    <select name="chair" id="name">
+      {% for U in users %}
+        {% if C.chair == U %}
+        <option selected value="{{ U.pk }}">{{ U.first_name }} {{ U.last_name }}</option>
+        {% else %}
+        <option value="{{ U.pk }}">{{ U.first_name }} {{ U.last_name }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Create">
+  </form>
+
+  <form class="committee" action="/committees/fincom/" method="post">
+    {% csrf_token %}
+    <label for="user" id="fincom">Add user to Fincom</label>
+    <select name="user" id="user">
+      {% for U in users %}
+        <option value="{{ U.pk }}">{{ U.first_name }} {{ U.last_name }}</option>
+      {% endfor %}
+    </select>
+
+    <input type="submit" value="Add">
+  </form>
+  
+  <form class="committee" action="/committees/fincom/delete" method="post">
+    {% csrf_token %}
+    <label>Remove user from Fincom</label><br>
+    {% for U in fincom %}
+      <input type="checkbox" name="user" value="{{ U.pk }}">
+      {{ U.first_name }} {{ U.last_name }} <br>
+    {% endfor %}
+
+    <input type="submit" value="Remove Users">
+  </form>
+
+  <div class="item">
+    <a href="/items" class="btn">Back</a>
+  </div>
+</div>
+
+{% endblock %}
