@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'dtd-fincom.herokuapp.com',
-    '*.delt.space',
+    'fincom.delt.space',
 ]
 
 AUTHENTICATION_BACKENDS = [
