@@ -1,0 +1,53 @@
+Hey {{ to }},
+
+Please review and then approve or reject the request from {{ submitter }} for {{ I.event }}: {{ I.desc }} by going to {% if html %}<a href="http://fincom.delt.space/items/{{ I.pk }}">{% endif %}http://fincom.delt.space/items/{{ I.pk }}{% if html %}</a>.<br><br>{% endif %}
+
+{% if html %}
+<div style="padding: 8px 36px; border: 1px solid #969499; box-sizing: border-box; width: 100%;">
+  <div style="color: #969499; font-size: 12px; font-weight: bold; margin: 0px;">
+    {{ I.comName }}
+  </div>
+  {% if I.approved %}
+    <div style="display: inline-block; text-align: center; width: 120px; height: 24px; font-size: 12px; color: #969499; border-radius: 2px; border: 1px solid #969499; box-sizing: border-box; padding: 4px; margin: 4px 0; background-color: #ffd9d9;">
+  {% elif I.processed %}
+    <div style="display: inline-block; text-align: center; width: 120px; height: 24px; font-size: 12px; color: #969499; border-radius: 2px; border: 1px solid #969499; box-sizing: border-box; padding: 4px; margin: 4px 0; background-color: #d9ffd9;">
+  {% elif I.rejected %}
+    <div style="display: inline-block; text-align: center; width: 120px; height: 24px; font-size: 12px; color: #f8f8f8; border-radius: 2px; border: 1px solid #969499; box-sizing: border-box; padding: 4px; margin: 4px 0; background-color: #969499">
+  {% else %}
+    <div style="display: inline-block; text-align: center; width: 120px; height: 24px; font-size: 12px; color: #969499; border-radius: 2px; border: 1px solid #969499; box-sizing: border-box; padding: 4px; margin: 4px 0; background-color: #fff7d9;">
+  {% endif %}
+      ${{ I.cost|floatformat:"2" }}
+    </div>
+  <a href="/items/{{ I.pk }}" style="text-decoration: none;">
+  <div style="margin: 8px 0; font-size: 16px; font-weight: ligher; color: #252526; padding: 0px;">
+    <b style="color: #4b4a4d;">{{ I.event }}:</b>
+    {{ I.desc }}
+    <em style="color: #969499; margin: 0 2px;">by</em>
+    {{ I.created_by.first_name }} {{ I.created_by.last_name }}
+    <em style="color: #969499; margin: 0 2px;">on</em> {{ I.date_purchased }}
+    <em style="color: #969499; margin: 0 2px;">(filed {{ I.date_filed }})</em>
+  </div>
+  </a>
+  <div style="color: #969499; font-size: 12px; margin: 0px;">
+    {% if I.approved or I.processed %}
+      Approved By: 
+      {% for u in I.approved_by.all %}
+        {{ u.first_name }} {{ u.last_name }}
+      {% endfor %}
+    {% elif I.rejected %}
+      Reimbursement Declined
+    {% else %}
+      Needs Approval
+    {% endif %}
+  </div>
+</div>
+
+<br>
+<br>
+{% endif %}
+Have a fiscally responsible day,
+{% if html %}
+<br>
+<br>
+{% endif %}
+Fincom Bot
