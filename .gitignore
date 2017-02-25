@@ -6,6 +6,13 @@ __pycache__/
 # vim
 *.swp
 
+# macOS
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+
 # tags
 tags
 
@@ -86,9 +93,16 @@ celerybeat-schedule
 # dotenv
 .env
 keys.sh
+server.crt
+server.csr
+server.key
+fullchain.pem
+privkey.pem
+
 
 # sass
 .sass-cache
+*.css.map
 
 # virtualenv
 venv/
