@@ -1,6 +1,6 @@
-Hey {{ to }},
+Hey {{ to }},{% if html %}<br><br>{% endif %}
 
-Please review and then approve or reject the request from {{ submitter }} for {{ I.event }}: {{ I.desc }} by going to {% if html %}<a href="http://fincom.delt.space/items/{{ I.pk }}">{% endif %}http://fincom.delt.space/items/{{ I.pk }}{% if html %}</a>.<br><br>{% endif %}
+Please review and then approve or reject the request from {{ submitter }} for {{ I.event }}: {{ I.desc }} by going to {% if html %}<a href="https://fincom.delt.space/items/{{ I.pk }}">{% endif %}https://fincom.delt.space/items/{{ I.pk }}{% if html %}</a>.<br><br>{% endif %}
 
 {% if html %}
 <div style="padding: 8px 36px; border: 1px solid #969499; box-sizing: border-box; width: 100%;">
@@ -18,7 +18,7 @@ Please review and then approve or reject the request from {{ submitter }} for {{
   {% endif %}
       ${{ I.cost|floatformat:"2" }}
     </div>
-  <a href="/items/{{ I.pk }}" style="text-decoration: none;">
+  <a href="https://fincom.delt.space/items/{{ I.pk }}" style="text-decoration: none;">
   <div style="margin: 8px 0; font-size: 16px; font-weight: ligher; color: #252526; padding: 0px;">
     <b style="color: #4b4a4d;">{{ I.event }}:</b>
     {{ I.desc }}
