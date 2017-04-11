@@ -14,17 +14,16 @@ section {
 		display: inline-block;
 		margin: $pad-m;
 		text-decoration: none;
-		color: $midgray;
+		color: $purple;
 		font-size: 12px;
 		float: right;
 	}
 
 	a.page:hover {
 		text-decoration: underline;
-		color: $purple;
 	}
 
-	a.page.empty:hover {
+	a.page.empty {
 		color: $midgray;
 		text-decoration: none;
 	}
@@ -58,7 +57,7 @@ section {
 		b {
 			color: $darkgray;
 		}
-		
+
 		em {
 			color: $midgray;
 			margin: 0 $pad-s;

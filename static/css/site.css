@@ -104,13 +104,12 @@ section {
   display: inline-block;
   margin: 8px;
   text-decoration: none;
-  color: #969499;
+  color: #563d7c;
   font-size: 12px;
   float: right; }
 .items a.page:hover {
-  text-decoration: underline;
-  color: #563d7c; }
-.items a.page.empty:hover {
+  text-decoration: underline; }
+.items a.page.empty {
   color: #969499;
   text-decoration: none; }
 
