@@ -111,7 +111,8 @@ section {
   text-decoration: underline; }
 .items a.page.empty {
   color: #969499;
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: default; }
 
 .item {
   padding: 8px 36;
