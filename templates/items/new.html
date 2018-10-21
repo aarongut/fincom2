@@ -5,27 +5,23 @@
 {% block main %}
 
 <div>
-<h1>Add New Reimbursements</h1>
+<h1>New Reimbursement</h1>
 <hr>
 
-<div class="rcol">
-  Make sure all information is accurate, you submit an itemized receipt, and
-  you select the correct committee.
-</div>
 
 <form action="/items/new" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <div>
+  <div class="inputRow">
     <label for="desc">Item</label>
     <input id="desc" type="text" name="desc" placeholder="What you bought">
   </div>
 
-  <div>
+  <div class="inputRow">
     <label for="event">Event</label>
     <input id="event" type="text" name="event" placeholder="When we need it">
   </div>
 
-  <div>
+  <div class="inputRow">
     <label for="committee">Committee or Budget</label>
     <select name="committee" id="committee">
       <option disabled selected>Select a committee</option>
@@ -35,32 +31,34 @@
     </select>
   </div>
 
-  <div>
+  <div class="inputRow">
     <label for="cost">Cost</label>
     <input id="cost" type="text" name="cost" placeholder="15.00">
   </div>
 
-  <div>
+  <div class="inputRow">
     <label for="date">Date Purchased</label>
     <input id="date" type="date" name="date" placeholder="mm/dd/yyyy">
   </div>
 
-  <div class="clear">
-    <div>
+  <div class="inputRow">
     <label for="details">Details</label>
-    <textarea id="details" name="details" rows="4" class="clear"></textarea>
-    </div>
+    <textarea id="details" name="details" rows="4"></textarea>
   </div>
 
-  <div>
+  <div class="inputRow">
     <label for="image">Receipt</label>
     <input type="file" name="image" id="image" accept="image/*">
   </div>
 
-  <div class="clear">
-  <div>
-  <input type="submit">
+  <div class="notes">
+    Make sure all information is accurate, you submit an itemized receipt, and
+    you select the correct committee.
   </div>
+
+  <div class="editActions">
+    <a href="/items" class="btn">Back</a>
+    <input type="submit" class="btn">
   </div>
 </form>
 </div>

@@ -9,15 +9,19 @@
   </head>
   <body>
     <div class="nav">
-      <a href="/logout">logout</a>
-      {% if fincom %}
-      <a href="/committees">manage</a>
-      {% endif %}
       <h3>The Aaron Gutierrez, '17, Fincom Web App</h3>
+      <div>
+        {% if fincom %}
+        <a href="/committees">manage</a>
+        {% endif %}
+        <a href="/logout">logout</a>
+      </div>
     </div>
-    <div class="container">
-      {% block main %}
-      {% endblock %}
+    <div class="content">
+      <div class="container">
+        {% block main %}
+        {% endblock %}
+      </div>
     </div>
       {% block bottom %}
       {% endblock %}
