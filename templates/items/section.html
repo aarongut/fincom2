@@ -3,7 +3,7 @@
   {% for I in items %}
     {% include "./item.html" %}
   {% empty %}
-  <div class="empty">No Reimbursements</div>
+  <div class="emptyItems">No Reimbursements</div>
   {% endfor %}
   <div class="pagination">
   {% if items.has_previous %}

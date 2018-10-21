@@ -242,11 +242,11 @@ section {
   background-color: #fff7d9;
 }
 
-.empty {
-  margin: 16px;
+.emptyItems {
+  margin: 36px;
   color: #969499;
-  font-weight: lighter;
-  font-size: 16px;
+  font-size: 12px;
+  font-style: italic;
   text-align: center;
 }
 
