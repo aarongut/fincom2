@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.core.mail import send_mail
 from django.template import loader
+from io import BytesIO
 from PIL import Image
 from storages.backends.s3boto3 import S3Boto3Storage
 from stdimage.models import StdImageField
@@ -47,7 +48,7 @@ def resizeAndRotate(file_name, variations, storage):
                     if rotated:
                         with BytesIO() as file_buffer:
                             image.save(file_buffer, file_format)
-                            f = ContentFile(file_buffer.getValue())
+                            f = ContentFile(file_buffer.getvalue())
                             storage.delete(file_name)
                             storage.save(file_name, f)
                 except:
