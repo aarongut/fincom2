@@ -14,17 +14,18 @@ body.login {
 
 	h3 {
 		font-size: 24px;
-		margin-bottom: $pad-m;
+		margin-bottom: 0;
 	}
 
 	h2 {
 		font-size: 28px;
-		margin-top: -$pad-l;
+		margin: 0 auto;
 	}
 
 	.btn {
 		background-color: $gold;
 		color: $purple;
+		font-size: 16px;
 
 		&:hover {
 			background-color: darken($gold, 15%);

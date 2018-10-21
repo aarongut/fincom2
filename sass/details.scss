@@ -13,28 +13,30 @@
 
 	img {
 		border: 1px solid $midgray;
-		max-width: 100%;
+		width: 100%;
 	}
 }
 
 .actions {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	margin: $pad-m 0;
 
 	a {
+		flex: 0 0 auto;
+		margin-bottom: $pad-m;
+		margin-right: $pad-m;
 		text-decoration: none;
-		font-size: 12px;
-		font-weight: normal;
 	}
 }
 
 .details {
-	color: $text;
+	border: 1px solid $midgray;
+	border-radius: $pad-s;
 	font-size: 12px;
-	font-weight: normal;
 	margin: $pad-m 0;
 	padding: $pad-l;
-	border-radius: $pad-s;
-	border: 1px solid $midgray;
 
 	span {
 		color: $midgray;

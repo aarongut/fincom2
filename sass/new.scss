@@ -1,0 +1,54 @@
+h1 {
+	font-size: 18px;
+	font-weight: lighter;
+	color: $purple;
+	margin: $pad-l;
+}
+
+hr {
+	margin: $pad-l;
+	color: $midgray;
+}
+
+.inputRow {
+	box-sizing: border-box;
+	margin-bottom: $pad-l;
+	padding: 0 $pad-xl;
+
+	label {
+		color: $midgray;
+		font-weight: bold;
+		font-size: 12px;
+		margin-left: $pad-s;
+	}
+
+	input,
+	select,
+	textarea {
+		box-sizing: border-box;
+		border: 1px solid $midgray;
+		font-size: 16px;
+		line-height: 24px;
+		padding: $pad-s;
+		width: 100%;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+}
+
+.editActions {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 $pad-xl;
+	width: 100%;
+}
+
+.notes {
+	color: $midgray;
+	font-size: 12px;
+	margin: $pad-l $pad-xl;
+}

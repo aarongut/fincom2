@@ -30,7 +30,7 @@ Please review and then approve or reject the request from {{ submitter }} for {{
   </a>
   <div style="color: #969499; font-size: 12px; margin: 0px;">
     {% if I.approved or I.processed %}
-      Approved By: 
+      Approved By:
       {% for u in I.approved_by.all %}
         {{ u.first_name }} {{ u.last_name }}
       {% endfor %}

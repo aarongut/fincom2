@@ -11,13 +11,13 @@
     <div>
       <h3>Delta Beta Chapter</h3>
       <h2>Fincom Webapp</h2>
-      {% if error %}
-      <p>{{ error }}</p>
-      {% endif %}
-      <a class="btn btn-info btn-lg"
+      <a class="btn btn-info"
          href="/login/google-oauth2/?next={{ next }}">
         Login with your AndrewID
       </a>
+      {% if error %}
+      <p>{{ error }}</p>
+      {% endif %}
     </div>
   </body>
 </html>
