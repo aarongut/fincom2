@@ -9,9 +9,6 @@ def index(request):
     template = loader.get_template('fincom/index.html')
     return HttpResponse(template.render({}, request))
 
-def encrypt(request):
-    return HttpResponse('tVQ35BIrm7ybiASBxRMHG2CAO44x-I2BVMqcrv_yJ2k.g4Ct3egntTJZl1LOzJH8v9Ri24BQ7blYjcbzPucJVE4', request)
-
 def user_logout(request):
     logout(request)
 

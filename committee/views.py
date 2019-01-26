@@ -2,7 +2,8 @@ from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
-from models import Committee
+
+from committee.models import Committee
 
 @login_required
 def edit(request):
