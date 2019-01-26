@@ -4,8 +4,9 @@ from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from models import Item
+
 from committee.models import Committee
+from items.models import Item
 
 def isAuthorised(request, item):
     return (request.user == item.committee.chair

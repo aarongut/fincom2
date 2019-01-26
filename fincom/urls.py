@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from . import views
+
+from fincom import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^logout$', views.user_logout, name='logout'),
     url(r'^items/', include('items.urls')),
     url(r'^committees/', include('committee.urls')),
-    url('.well-known/acme-challenge/tVQ35BIrm7ybiASBxRMHG2CAO44x-I2BVMqcrv_yJ2k', views.encrypt, name='encrypt'),
     url('', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
 ]

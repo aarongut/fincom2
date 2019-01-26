@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'dtd-fincom.herokuapp.com',
+    'fincom.frat.tech',
     'fincom.delt.space',
 ]
 
@@ -98,10 +98,10 @@ WSGI_APPLICATION = 'fincom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbu9ujb6cnhc3n',
-        'USER': 'dexgqmkgoabqyd',
-        'PASSWORD': os.environ['DBPASSWD'],
-        'HOST': 'ec2-50-19-89-124.compute-1.amazonaws.com',
+        'NAME': 'fincom',
+        'USER': 'fincom',
+        'PASSWORD': 'fincom',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
