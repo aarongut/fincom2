@@ -8,7 +8,7 @@
 <div class="approve">
   {% if I.details %}
   <div class="details">
-    <span>Details:</span><br>
+    <span>Details</span><br>
     {{ I.details }}</div>
   {% endif %}
   <div class="status">Status: <span>{{ I.statusText }}</span></div>
@@ -23,7 +23,9 @@
     <a href="/items" class="btn">Back</a>
   </div>
 
-  <a href="{{ I.image.url }}"><img src="{{ I.image.thumbnail.url }}"></a>
+  <a href="{{ I.image.url }}">
+    <img src="{{ I.image.thumbnail.url }}" alt="Click to view">
+  </a>
 </div>
 </div>
 

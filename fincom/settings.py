@@ -28,7 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
-    'dtd-fincom.herokuapp.com',
+    'fincom.frat.tech',
     'fincom.delt.space',
 ]
 
@@ -98,10 +98,10 @@ WSGI_APPLICATION = 'fincom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbu9ujb6cnhc3n',
-        'USER': 'dexgqmkgoabqyd',
-        'PASSWORD': os.environ['DBPASSWD'],
-        'HOST': 'ec2-50-19-89-124.compute-1.amazonaws.com',
+        'NAME': 'fincom',
+        'USER': 'fincom',
+        'PASSWORD': 'fincom',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
@@ -110,8 +110,8 @@ DATABASES = {
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID=os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_AUTO_CREATE_BUCKET=True
 AWS_STORAGE_BUCKET_NAME='fincom'
+AWS_DEFAULT_ACL=None
 AWS_S3_FILE_OVERWRITE=False
 
 
@@ -139,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
 SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['andrew.cmu.edu', 'alumni.cmu.edu']
-SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {'hd': 'andrew.cmu.edu' }
+SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {'hd': '*' }
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/items/'
 LOGIN_URL = '/login/google-oauth2/'
 

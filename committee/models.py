@@ -5,7 +5,7 @@ from django.db import models
 
 class Committee(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    chair = models.ForeignKey(User, null=True)
+    chair = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

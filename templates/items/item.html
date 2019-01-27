@@ -1,18 +1,20 @@
 <div class="item">
-  <div class="committee">
-    {{ I.comName }}
-  </div>
-  {% if I.approved %}
-    <div class="cost approved">
-  {% elif I.processed %}
-    <div class="cost processed">
-  {% elif I.rejected %}
-    <div class="cost rejected">
-  {% else %}
-    <div class="cost newItem">
-  {% endif %}
-      ${{ I.cost|floatformat:"2" }}
+  <div class="committeeAndCost">
+    <div class="committee">
+      {{ I.comName }}
     </div>
+    {% if I.approved %}
+      <div class="cost approved">
+    {% elif I.processed %}
+      <div class="cost processed">
+    {% elif I.rejected %}
+      <div class="cost rejected">
+    {% else %}
+      <div class="cost newItem">
+    {% endif %}
+        ${{ I.cost|floatformat:"2" }}
+      </div>
+  </div>
   <a href="/items/{{ I.pk }}">
   <div class="details-row">
     <b>{{ I.event }}:</b>
