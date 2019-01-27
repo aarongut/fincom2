@@ -75,7 +75,7 @@ class Item(models.Model):
 
     desc = models.CharField(max_length=200)
     event = models.CharField(max_length=200)
-    committee = models.ForeignKey(Committee)
+    committee = models.ForeignKey(Committee, on_delete=models.DO_NOTHING)
     details = models.TextField()
     cost = models.DecimalField(max_digits=7, decimal_places=2)
     date_purchased = models.DateField('date purchased')
@@ -84,7 +84,7 @@ class Item(models.Model):
                           variations={'thumbnail': (600, 600)}
                          )
 
-    created_by = models.ForeignKey(User, related_name='created_by')
+    created_by = models.ForeignKey(User, related_name='created_by', on_delete=models.DO_NOTHING)
     approved_by = models.ManyToManyField(User, blank=True, related_name='approved_by')
     date_filed = models.DateTimeField('date filed')
     status = models.CharField(max_length=2, choices=STATUS)

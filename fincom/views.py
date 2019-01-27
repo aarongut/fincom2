@@ -3,7 +3,7 @@ from django.contrib.auth import logout
 from django.template import loader
 
 def index(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return HttpResponseRedirect('/items')
 
     template = loader.get_template('fincom/index.html')
