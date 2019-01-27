@@ -1,12 +1,12 @@
-from django.conf.urls import url
-from . import views
+from django.urls import path
+from items import views
 
 urlpatterns = [
-    url(r'^$', views.list, name='list'),
-    url(r'^(?P<item_id>\d+)/$', views.details, name='details'),
-    url(r'^(?P<item_id>\d+)/approve$', views.approve, name='approve'),
-    url(r'^(?P<item_id>\d+)/reject$', views.reject, name='reject'),
-    url(r'^(?P<item_id>\d+)/edit$', views.edit, name='edit'),
-    url(r'^(?P<item_id>\d+)/delete$', views.delete, name='delete'),
-    url(r'^new$', views.new_form, name='new_form'),
+    path(r'', views.list, name='list'),
+    path('<int:item_id>/', views.details, name='details'),
+    path('<int:item_id>/approve', views.approve, name='approve'),
+    path('<int:item_id>/reject', views.reject, name='reject'),
+    path('<int:item_id>/edit', views.edit, name='edit'),
+    path('<int:item_id>/delete', views.delete, name='delete'),
+    path('new', views.new_form, name='new_form'),
 ]
